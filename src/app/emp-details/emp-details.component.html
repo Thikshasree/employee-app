@@ -1,0 +1,40 @@
+<div class="container">
+	
+	<div style="display: flex;justify-content:flex-end;margin-top:10px;">
+		<button mat-raised-button color="primary" (click)="onClickAdd()">+Add Employee</button>
+	</div>
+
+	
+	<table style="width:100%;margin-top:10px;" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+		<ng-container matColumnDef="name">
+			<th mat-header-cell *matHeaderCellDef> Name </th>
+			<td mat-cell *matCellDef="let element"> {{element.name}} </td>
+		</ng-container>
+		<ng-container matColumnDef="companyName">
+			<th mat-header-cell *matHeaderCellDef> Company Name </th>
+			<td mat-cell *matCellDef="let element"> {{element.companyName}} </td>
+		</ng-container>
+		<ng-container matColumnDef="emailId">
+			<th mat-header-cell *matHeaderCellDef> Email-Id </th>
+			<td mat-cell *matCellDef="let element"> {{element.emailId}} </td>
+		</ng-container>
+		<ng-container matColumnDef="contactNo">
+			<th mat-header-cell *matHeaderCellDef> Contact No </th>
+			<td mat-cell *matCellDef="let element"> {{element.contactNo}} </td>
+		</ng-container>
+		<ng-container matColumnDef="designation">
+			<th mat-header-cell *matHeaderCellDef> Designation </th>
+			<td mat-cell *matCellDef="let element"> {{element.designation}} </td>
+		</ng-container>
+		<ng-container matColumnDef="action">
+			<th mat-header-cell *matHeaderCellDef> Action </th>
+			<td mat-cell *matCellDef="let element"> 
+				<mat-icon color="warn" (click)="onClickDelete(element)">delete</mat-icon>
+				<mat-icon color="primary" (click)="onClickEdit(element)">edit</mat-icon>
+			</td>
+		</ng-container>
+		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+		<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+	</table>
+	
+</div>
